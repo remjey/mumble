@@ -642,6 +642,19 @@
         </property>
        </widget>
       </item>
+      <item row="5" column="0" colspan="3">
+       <widget class="QCheckBox" name="qcbEnableLowCutFilter">
+        <property name="toolTip">
+         <string>Enable 80Hz low-cut filter, which will remove DC bias and attenuate wind and breathing noise, possibly improving voice activity detection. </string>
+        </property>
+        <property name="whatsThis">
+         <string>If checked, Mumble will filter out frequencies below 80Hz, removing DC bias and attenuating wind and breathing. If the input has a high DC bias, it will improve voice activity detection, better discerning voices close and far from the microphone. It may very slightly attenuate low frequencies in the speaker's voice. </string>
+        </property>
+        <property name="text">
+         <string>Enable 80Hz low-cut filter</string>
+        </property>
+       </widget>
+      </item>
       <item row="4" column="0" colspan="3">
        <widget class="QGroupBox" name="groupBox">
         <property name="title">

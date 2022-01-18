@@ -42,6 +42,7 @@
 	PROCESS(audio, VAD_MIN_KEY, fVADmin)                                                    \
 	PROCESS(audio, VAD_MAX_KEY, fVADmax)                                                    \
 	PROCESS(audio, NOISE_CANCEL_MODE_KEY, noiseCancelMode)                                  \
+	PROCESS(audio, ENABLE_LOW_CUT_FILTER, bEnableLowCutFilter)                              \
 	PROCESS(audio, SPEEX_NOISE_CANCEL_STRENGTH_KEY, iSpeexNoiseCancelStrength)              \
 	PROCESS(audio, INPUT_CHANNEL_MASK_KEY, uiAudioInputChannelMask)                         \
 	PROCESS(audio, ALLOW_LOW_DELAY_MODE_KEY, bAllowLowDelay)                                \

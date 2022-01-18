@@ -199,6 +199,8 @@ void AudioInputDialog::load(const Settings &r) {
 			break;
 	}
 
+	loadCheckBox(qcbEnableLowCutFilter, r.bEnableLowCutFilter);
+
 	loadSlider(qsAmp, 20000 - r.iMinLoudness);
 
 	// Idle auto actions
@@ -249,6 +251,8 @@ void AudioInputDialog::save() const {
 	} else {
 		s.noiseCancelMode = Settings::NoiseCancelSpeex;
 	}
+
+	s.bEnableLowCutFilter       = qcbEnableLowCutFilter->isChecked();
 
 	s.iMinLoudness     = 18000 - qsAmp->value() + 2000;
 	s.iVoiceHold       = qsTransmitHold->value();

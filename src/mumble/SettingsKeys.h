@@ -61,6 +61,7 @@ const SettingsKey NOISE_CANCEL_MODE_KEY                       = { "noise_cancel_
 const SettingsKey SPEEX_NOISE_CANCEL_STRENGTH_KEY             = { "speex_noise_cancel_strength" };
 const SettingsKey INPUT_CHANNEL_MASK_KEY                      = { "input_channel_mask" };
 const SettingsKey ALLOW_LOW_DELAY_MODE_KEY                    = { "allow_low_delay_mode" };
+const SettingsKey ENABLE_LOW_CUT_FILTER                       = { "enable_low_cut_filter" };
 const SettingsKey VOICE_HOLD_KEY                              = { "voice_hold" };
 const SettingsKey OUTPUT_DELAY_KEY                            = { "output_delay" };
 const SettingsKey ECHO_CANCEL_MODE_KEY                        = { "echo_cancel_mode" };

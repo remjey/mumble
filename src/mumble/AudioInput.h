@@ -212,6 +212,7 @@ protected:
 
 	bool bEchoMulti;
 	Settings::NoiseCancel noiseCancel;
+  bool enableLowCutFilter;
 	// Standard microphone sample rate (samples/s)
 	static const unsigned int iSampleRate = SAMPLE_RATE;
 	/// Based the sample rate, 48,000 samples/s = 48 samples/ms.
@@ -239,6 +240,7 @@ protected:
 
 	float *pfMicInput;
 	float *pfEchoInput;
+	float pfMicPreviousFiltered, pfMicPrevious;
 
 	Resynchronizer resync;
 	std::vector< short > opusBuffer;

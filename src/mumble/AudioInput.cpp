@@ -574,6 +574,19 @@ void AudioInput::addMic(const void *data, unsigned int nsamp) {
 			// Frame complete
 			iMicFilled = 0;
 
+      // Low-cut filter
+      if (enableLowCutFilter) {
+        float frequency = 80.0;
+        float tau = 1.0 / (6.283185 * frequency);
+        float alpha = tau / (tau + 1.0 / iMicFreq);
+        for (unsigned int i = 0; i < iMicLength; ++i) {
+          float pfMicCurrent = pfMicInput[i];
+          pfMicInput[i] = alpha * pfMicPreviousFiltered + alpha * (pfMicCurrent - pfMicPrevious);
+          pfMicPrevious = pfMicCurrent;
+          pfMicPreviousFiltered = pfMicInput[i];
+        }
+      }
+
 			// If needed resample frame
 			float *pfOutput = srsMic ? (float *) alloca(iFrameSize * sizeof(float)) : nullptr;
 			float *ptr      = srsMic ? pfOutput : pfMicInput;
@@ -754,6 +767,7 @@ void AudioInput::resetAudioProcessor() {
 	sppPreprocess = speex_preprocess_state_init(iFrameSize, iSampleRate);
 	resync.reset();
 	selectNoiseCancel();
+  enableLowCutFilter = Global::get().s.bEnableLowCutFilter;
 
 	iArg = 1;
 	speex_preprocess_ctl(sppPreprocess, SPEEX_PREPROCESS_SET_VAD, &iArg);
@@ -790,6 +804,9 @@ void AudioInput::resetAudioProcessor() {
 	bResetEncoder = true;
 
 	bResetProcessor = false;
+
+	pfMicPrevious = 0;
+	pfMicPreviousFiltered = 0;
 }
 
 bool AudioInput::selectCodec() {

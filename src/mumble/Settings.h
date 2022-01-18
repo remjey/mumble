@@ -260,6 +260,7 @@ struct Settings {
 	NoiseCancel noiseCancelMode     = NoiseCancelSpeex;
 	int iSpeexNoiseCancelStrength   = -30;
 	quint64 uiAudioInputChannelMask = 0xffffffffffffffffULL;
+	bool bEnableLowCutFilter        = false;
 
 	// Idle auto actions
 	unsigned int iIdleTime           = 5 * 60;
